@@ -27,19 +27,21 @@ const mostrarMenu = () => {
   });
 };
 const pausa = () => {
-  return new Promise((resolve, reject) => {
-    const readLine = require("readline").createInterface({
-      input: process.stdin,
-      output: process.stdout,
-    });
-    readLine.question(
-      `\nPRESIONE  ${"ENTER PARA CONTINUAR".green}\n`,
-      (opt) => {
-        readLine.close();
-        resolve();
-      }
-    );
-  });
+  return /** @type {Promise<void>} */ (
+    new Promise((resolve, reject) => {
+      const readLine = require("readline").createInterface({
+        input: process.stdin,
+        output: process.stdout,
+      });
+      readLine.question(
+        `\nPRESIONE  ${"ENTER PARA CONTINUAR".green}\n`,
+        (opt) => {
+          readLine.close();
+          resolve();
+        }
+      );
+    })
+  );
 };
 
 module.exports = {
